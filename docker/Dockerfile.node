@@ -1,0 +1,15 @@
+FROM node:22
+
+# Install PNPM
+RUN npm install -g pnpm
+
+WORKDIR /var/www/html
+
+# Copy hanya file yang diperlukan untuk instalasi dependensi
+COPY package.json pnpm-lock.yaml* ./
+
+# Install dependensi menggunakan PNPM
+RUN pnpm install
+
+# Jalankan perintah default
+CMD ["pnpm", "run", "build"]

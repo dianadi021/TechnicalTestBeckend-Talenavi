@@ -1,0 +1,60 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+# Cache untuk mempercepat proses CI/CD
+cache:
+  paths:
+    - node_modules/
+    - vendor/
+
+# Job untuk build
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - npm install
+    - npm run build
+    - composer install --no-dev --optimize-autoloader
+  only:
+    - main
+    - master
+    - staging
+    - dev
+
+# Job untuk testing
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm run test
+    - php artisan test
+  only:
+    - main
+    - master
+    - staging
+    - dev
+
+# Job untuk deploy ke VPS Production
+deploy_production:
+  stage: deploy
+  script:
+    - echo "Deploying to Production..."
+    - ssh user@production-server "cd /var/www/html && git pull origin main && composer install --no-dev && npm install && npm run build && php artisan migrate --force"
+  only:
+    - main
+    - master
+
+# Job untuk deploy ke VPS Development
+deploy_development:
+  stage: deploy
+  script:
+    - echo "Deploying to Development..."
+    - ssh user@development-server "cd /var/www/html && git pull origin staging && composer install --no-dev && npm install && npm run build && php artisan migrate --force"
+  only:
+    - staging
+    - dev

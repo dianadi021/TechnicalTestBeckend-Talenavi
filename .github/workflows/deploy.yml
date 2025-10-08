@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - staging
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm run build
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+      - name: Install PHP Dependencies
+        run: composer install --no-dev --optimize-autoloader
+      - name: Run Tests
+        run: |
+          npm run test
+          php artisan test
+
+  deploy_production:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production
+        run: |
+          ssh user@production-server "cd /var/www/html && git pull origin main && composer install --no-dev && npm install && npm run build && php artisan migrate --force"
+
+  deploy_development:
+    if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/dev'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Development
+        run: |
+          ssh user@development-server "cd /var/www/html && git pull origin staging && composer install --no-dev && npm install && npm run build && php artisan migrate --force"
