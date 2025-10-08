@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\V1\ToDoListController;
 // Route::middleware('auth:sanctum')->group(function () {
     Route::middleware(['api'])->group(function () {
         Route::prefix('v1')->group(function () {
-            Route::post('/todo-list', [ToDoListController::class, 'store']);
+            Route::resource('/todo-list', ToDoListController::class);
             Route::get('/todo-list/export/excel', [ToDoListController::class, 'getExportExcels']);
         });
     });

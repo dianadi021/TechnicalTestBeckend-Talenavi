@@ -16,9 +16,13 @@ class ToDoListController extends ApiController
 
     public function index(Request $req): JsonResponse { return $this->GetAllDatas($req); }
 
+    public function create() {}
+
     public function store(ToDoListRequest $req): JsonResponse { return $this->CreateData($req); }
 
     public function show(string $id): JsonResponse { return $this->GetByID($id); }
+
+    public function edit(string $id) {}
 
     public function update(ToDoListRequest $req, string $id): JsonResponse { return $this->UpdateByID($req, $id); }
 
