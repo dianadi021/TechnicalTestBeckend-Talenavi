@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Fullstack Laravel')</title>
+    <title>@yield('title', 'Fullstack Talenavi')</title>
 
     <!-- TOKEN SEARCH ENGINE -->
     <!--<meta content='#tokenyandex' name='yandex-verification'/>

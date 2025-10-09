@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', 'Fullstack Laravel')
+    @section('title', 'Fullstack Talenavi')
 
     @section('root_container')
         <header class="w-full">@include('layouts.navigation')</header>
