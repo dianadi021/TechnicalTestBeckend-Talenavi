@@ -73,7 +73,7 @@ abstract class ApiController extends Controller
     public function DeleteByID(string $id): JsonResponse
     {
         try {
-            $datas = $this->service->delete($id);
+            $datas = $this->service->destroy($id);
 
             return $this->jsonResponse(200, "Data berhasil dihapus!", $datas);
         } catch (Exception $err) {

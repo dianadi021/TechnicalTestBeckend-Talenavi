@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class TodoList extends Model
+class ToDoList extends Model
 {
     use Notifiable, HasFactory, Tools;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'todo_lists';
+
     protected $fillable = [
         'title',
         'assignee',

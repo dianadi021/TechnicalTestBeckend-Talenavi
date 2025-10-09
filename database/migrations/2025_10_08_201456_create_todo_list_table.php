@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('assignee')->nullable();
-            $table->date('due_date');
-            $table->integer('time_tracked')->default(0);
+            $table->timestamp('due_date');
+            $table->bigInteger('time_tracked')->default(0);
             $table->enum('status', ['pending', 'open', 'in_progress', 'completed', 'cancelled']);
             $table->enum('priority', ['high', 'medium', 'low'])->nullable();
             $table->timestamps();
@@ -33,7 +33,10 @@ return new class extends Migration
 
             DB::statement("DROP TYPE IF EXISTS priority_todo_list_enum");
             DB::statement("CREATE TYPE priority_todo_list_enum AS ENUM ('high', 'medium', 'low')");
-            DB::statement("ALTER TABLE todo_lists ALTER COLUMN status TYPE status_todo_list_enum USING (status::status_todo_list_enum)");
+            DB::statement("ALTER TABLE todo_lists ALTER COLUMN priority TYPE priority_todo_list_enum USING (priority::priority_todo_list_enum)");
+
+            DB::statement("ALTER TABLE todo_lists ALTER COLUMN time_tracked SET DEFAULT 0");
+            DB::statement("ALTER TABLE todo_lists ALTER COLUMN time_tracked SET NOT NULL");
         }
     }
 

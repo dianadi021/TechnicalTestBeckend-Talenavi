@@ -15,8 +15,8 @@
     <meta content='#tokengoogle' name='google-site-verification'/> -->
 
     <!-- LANGUAGE DIRECTORY -->
-    <link rel="alternate" hreflang="en" href="{{ route('welcome') }}" />
-    <link rel="alternate" hreflang="id" href="{{ route('welcome') }}" />
+    {{-- <link rel="alternate" hreflang="en" href="{{ route('welcome') }}" />
+    <link rel="alternate" hreflang="id" href="{{ route('welcome') }}" /> --}}
 
     <!-- <meta itemprop="name" content="Bootstrap Gallery - free examples, templates &amp; tutorial"/>
     <meta itemprop="description" content="Responsive galleries created with Bootstrap 5. Image gallery, video gallery, photo gallery, full-page, eCommerce, lightbox, slider, thumbnails, &amp; more."/>

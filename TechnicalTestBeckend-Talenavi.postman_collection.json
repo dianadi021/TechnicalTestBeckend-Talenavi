@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "35397ed5-6065-46d5-984a-f825f1954997",
+		"name": "TechnicalTestBeckend-Talenavi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30319445"
+	},
+	"item": [
+		{
+			"name": "ToDoLists",
+			"item": [
+				{
+					"name": "todo-list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"a\",\r\n    \"assignee\": \"\",\r\n    \"due_date\": \"2025-10-09 00:00:00\",\r\n    // \"time_tracked\": \"\",\r\n    \"status\": \"\",\r\n    \"priority\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{link_url}}:{{port_app}}/{{path_api}}/v1/todo-list"
+					},
+					"response": []
+				},
+				{
+					"name": "todo-list?title=",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"due_date\": \"2025-10-19 00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{link_url}}:{{port_app}}/{{path_api}}/v1/todo-list/2"
+					},
+					"response": []
+				},
+				{
+					"name": "todo-list",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Tes\",\r\n    \"assignee\": \"WEW\",\r\n    \"due_date\": \"2025-10-19 00:00:00\",\r\n    \"time_tracked\": 4,\r\n    \"status\": \"completed\",\r\n    \"priority\": \"high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{link_url}}:{{port_app}}/{{path_api}}/v1/todo-list/9"
+					},
+					"response": []
+				},
+				{
+					"name": "todo-list",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{link_url}}:{{port_app}}/{{path_api}}/v1/todo-list/3"
+					},
+					"response": []
+				},
+				{
+					"name": "todo-list/export/excel?params=",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{link_url}}:{{port_app}}/{{path_api}}/v1/todo-list/export/excel?params=",
+							"host": [
+								"{{link_url}}"
+							],
+							"port": "{{port_app}}",
+							"path": [
+								"{{path_api}}",
+								"v1",
+								"todo-list",
+								"export",
+								"excel"
+							],
+							"query": [
+								{
+									"key": "params",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "link_url",
+			"value": "localhost"
+		},
+		{
+			"key": "port_app",
+			"value": "8000"
+		},
+		{
+			"key": "path_api",
+			"value": "api"
+		}
+	]
+}

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Api;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -23,21 +22,24 @@ class ToDoListRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'assignee' => ['nullable', 'string', 'max:255'],
+            'time_tracked' => ['nullable', 'numeric'],
             'due_date' => ['required', 'date', 'date_format:Y-m-d H:i:s'],
-            'time_tracked' => ['nullable', 'numeric', 'max:255'],
+            'status' => ['nullable', 'string', 'max:255'],
+            'priority' => ['nullable', 'string', 'max:255'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'title.required' => 'Title is required.',
-            'due_date.required' => 'Due date is required.',
+            'title.required' => 'Title wajib diisi.',
+            'due_date.required' => 'Due date wajib diisi.',
+            'due_date.date_format' => 'Format tanggal harus "Y-m-d H:i:s", contoh: 2025-10-10 13:00:00.',
         ];
     }
 
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException($this->jsonResponse(422, "Data yang dikirimkan tidak sesuai!", [ 'errors' => $validator->errors() ]));
+        throw new HttpResponseException($this->jsonResponse(422, "Data yang dikirimkan tidak sesuai!", ['errors' => $validator->errors()]));
     }
 }

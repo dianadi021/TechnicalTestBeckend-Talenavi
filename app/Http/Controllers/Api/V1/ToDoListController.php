@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
+use Exception;
 
 use Illuminate\Http\JsonResponse;
+
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\ApiController;
 
 use App\Services\V1\ToDoListService;
 use App\Http\Requests\Api\ToDoListRequest;
@@ -16,13 +19,38 @@ class ToDoListController extends ApiController
 
     public function index(Request $req): JsonResponse { return $this->GetAllDatas($req); }
 
+    public function create() {}
+
     public function store(ToDoListRequest $req): JsonResponse { return $this->CreateData($req); }
 
     public function show(string $id): JsonResponse { return $this->GetByID($id); }
+
+    public function edit(string $id) {}
 
     public function update(ToDoListRequest $req, string $id): JsonResponse { return $this->UpdateByID($req, $id); }
 
     public function destroy(string $id): JsonResponse { return $this->DeleteByID($id); }
 
-    public function getExportExcel(Request $req) { return $this->getExportExcel($req); }
+    public function tableView(Request $req): View {
+        return $this->service->tableView($req);
+    }
+
+    public function getExportExcel(Request $req) {
+        try {
+            return $this->service ->getExportExcel($req);
+        } catch (Exception $err) {
+            return $this->jsonResponse(500, "Gagal generate excel.", $err->getMessage());
+        }
+    }
+
+
+    public function getChartData(Request $req) {
+        try {
+            $datas = $this->service ->getChartData($req);
+
+            return $this->jsonResponse(201, "Berhasil generate data chart.", $datas);
+        } catch (Exception $err) {
+            return $this->jsonResponse(500, null, $err->getMessage());
+        }
+    }
 }
