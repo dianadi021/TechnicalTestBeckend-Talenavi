@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use Exception;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-
 use Illuminate\Http\JsonResponse;
+
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\ApiController;
 
 use App\Services\V1\ToDoListService;
 use App\Http\Requests\Api\ToDoListRequest;
@@ -30,9 +31,13 @@ class ToDoListController extends ApiController
 
     public function destroy(string $id): JsonResponse { return $this->DeleteByID($id); }
 
+    public function tableView(Request $req): View {
+        return $this->service->tableView($req);
+    }
+
     public function getExportExcel(Request $req) {
         try {
-            return $this->service->getExportExcel($req);
+            return $this->service ->getExportExcel($req);
         } catch (Exception $err) {
             return $this->jsonResponse(500, "Gagal generate excel.", $err->getMessage());
         }
