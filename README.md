@@ -1,4 +1,4 @@
-<h1 align='center'>Welcome! #Fullstack Laravel 🚀</h1>
+<h1 align='center'>Welcome! #Fullstack Talenavi 🚀</h1>
 
 # Requirements
 ## Languages
@@ -38,10 +38,6 @@
 
 # Project Worklist
 > [![notion]](https://www.notion.so/skuadproduction/Fullstack-Klinik-fd00424e9f0f4871996679934edb861a) </br>
-
-# Flowchart
-- Menggunakan file `Fullstack-Laravel.drawio`
-> [![diagrams]](https://app.diagrams.net) </br>
 
 # Setup
 ## Environment
