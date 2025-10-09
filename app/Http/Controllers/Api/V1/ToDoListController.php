@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use Exception;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
@@ -28,5 +30,24 @@ class ToDoListController extends ApiController
 
     public function destroy(string $id): JsonResponse { return $this->DeleteByID($id); }
 
-    public function getExportExcel(Request $req) { return $this->getExportExcel($req); }
+    public function getExportExcel(Request $req) {
+        try {
+            $datas = $this->service->getExportExcel($req);
+
+            return $this->jsonResponse(201, "Berhasil generate data excel.", $datas);
+        } catch (Exception $err) {
+            return $this->jsonResponse(500, null, $err->getMessage());
+        }
+    }
+
+
+    public function getChartData(Request $req) {
+        try {
+            $datas = $this->service ->getChartData($req);
+
+            return $this->jsonResponse(201, "Berhasil generate data chart.", $datas);
+        } catch (Exception $err) {
+            return $this->jsonResponse(500, null, $err->getMessage());
+        }
+    }
 }

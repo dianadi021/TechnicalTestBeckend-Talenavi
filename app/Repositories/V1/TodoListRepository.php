@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use App\Traits\Tools;
 
 use App\Models\ToDoList;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 use Exception;
@@ -97,6 +96,12 @@ class ToDoListRepository
 
     public function update(object $req, string $id) {
         try {
+            $data = $this->todoModel::find($id);
+
+            if (!$data) {
+                throw new Exception("Data tidak ditemukan!");
+            }
+
             Log::info("START UPDATE TODO LIST: " . json_encode($req->all(), JSON_PRETTY_PRINT));
 
             $validated = $req->validated();
@@ -105,7 +110,6 @@ class ToDoListRepository
                 throw new Exception("Tanggal tidak boleh kurang dari hari ini!");
             }
 
-            $data = $this->todoModel::find($id);
             $data->update($validated);
 
             return $data;
@@ -117,7 +121,13 @@ class ToDoListRepository
 
     public function destroy(string $id) {
         try {
-            return $this->todoModel::find($id)->delete();
+            $data = $this->todoModel::find($id);
+
+            if (!$data) {
+                throw new Exception("Data tidak ditemukan!");
+            }
+
+            return $data->delete();
         } catch (Exception $err) {
             throw new Exception($err->getMessage());
         }
