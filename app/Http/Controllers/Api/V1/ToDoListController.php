@@ -32,11 +32,9 @@ class ToDoListController extends ApiController
 
     public function getExportExcel(Request $req) {
         try {
-            $datas = $this->service->getExportExcel($req);
-
-            return $this->jsonResponse(201, "Berhasil generate data excel.", $datas);
+            return $this->service->getExportExcel($req);
         } catch (Exception $err) {
-            return $this->jsonResponse(500, null, $err->getMessage());
+            return $this->jsonResponse(500, "Gagal generate excel.", $err->getMessage());
         }
     }
 

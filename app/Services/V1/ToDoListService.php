@@ -2,7 +2,12 @@
 
 namespace App\Services\V1;
 
+use Exception;
+
 use App\Traits\ResponseCode;
+
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Repositories\V1\ToDoListRepository;
 
@@ -23,7 +28,19 @@ class ToDoListService
 
     public function destroy(string $id) { return $this->repos->destroy($id); }
 
-    public function getExportExcel(object $req) { return $this->repos->getExportExcel($req); }
+    public function getExportExcel(object $req) {
+        try {
+            // $this->repos->getExportExcel($req);
+
+            $filename = "todo_list-" . now() . ".xlsx";
+
+            return Excel::download(new UsersExport, $filename, [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ]);
+        } catch (Exception $err) {
+            throw new Exception($err->getMessage());
+        }
+    }
 
     public function getChartData(object $req) { return $this->repos->getChartData($req); }
 }

@@ -33,7 +33,7 @@ return new class extends Migration
 
             DB::statement("DROP TYPE IF EXISTS priority_todo_list_enum");
             DB::statement("CREATE TYPE priority_todo_list_enum AS ENUM ('high', 'medium', 'low')");
-            DB::statement("ALTER TABLE todo_lists ALTER COLUMN status TYPE status_todo_list_enum USING (status::status_todo_list_enum)");
+            DB::statement("ALTER TABLE todo_lists ALTER COLUMN priority TYPE priority_todo_list_enum USING (priority::priority_todo_list_enum)");
 
             DB::statement("ALTER TABLE todo_lists ALTER COLUMN time_tracked SET DEFAULT 0");
             DB::statement("ALTER TABLE todo_lists ALTER COLUMN time_tracked SET NOT NULL");

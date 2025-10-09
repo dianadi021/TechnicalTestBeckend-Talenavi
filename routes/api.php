@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\ToDoListController;
         Route::prefix('v1')->group(function () {
             Route::resource('/todo-list', ToDoListController::class);
             Route::get('/todo-list/export/excel', [ToDoListController::class, 'getExportExcel']);
+            Route::get('/chart/todo-list', [ToDoListController::class, 'getChartData']);
         });
     });
 // });

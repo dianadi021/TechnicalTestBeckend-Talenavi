@@ -22,8 +22,10 @@ class ToDoListRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'assignee' => ['nullable', 'string', 'max:255'],
-            'time_tracked' => ['nullable', 'numeric', 'max:255'],
+            'time_tracked' => ['nullable', 'numeric'],
             'due_date' => ['required', 'date', 'date_format:Y-m-d H:i:s'],
+            'status' => ['nullable', 'string', 'max:255'],
+            'priority' => ['nullable', 'string', 'max:255'],
         ];
     }
 
