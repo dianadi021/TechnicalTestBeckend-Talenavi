@@ -1,15 +1,16 @@
 FROM node:22
 
-# Install PNPM
-RUN npm install -g pnpm
-
-WORKDIR /var/www/html
+WORKDIR /var/www/laravel_app
 
 # Copy hanya file yang diperlukan untuk instalasi dependensi
 COPY package.json pnpm-lock.yaml* ./
 
+# Expose port
+EXPOSE 5173
+
 # Install dependensi menggunakan PNPM
-RUN pnpm install
+RUN npm install
 
 # Jalankan perintah default
-CMD ["pnpm", "run", "build"]
+CMD ["npm", "run", "dev"]
+# CMD ["pnpm", "run", "build"]

@@ -5,39 +5,14 @@
 > [<img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" />![version](https://img.shields.io/badge/version-8.2.12-blue)](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download) </br>
 > [<img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white" />![version](https://img.shields.io/badge/version-3.7.1-blue)](https://cdnjs.com/libraries/jquery) </br>
 
-## Frontend
-> [<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />![version](https://img.shields.io/badge/version-1.7-blue)](https://tailwindcss.com/docs/guides/vite#vue) </br>
-> [<img src="https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white" />![version](https://img.shields.io/badge/version-6.5.2-blue)](https://cdnjs.com/libraries/font-awesome) </br>
-
 ## Database
 > [<img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />![version](https://img.shields.io/badge/version-8.0.39-blue)](https://dev.mysql.com/downloads/installer/) </br>
-> [<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />![version](https://img.shields.io/badge/version-17.2-blue)](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) </br>
 
 ## Tools
 > [<img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />![version](https://img.shields.io/badge/version-11.xx-blue)](https://laravel.com/docs/11.x/installation) </br>
 > [<img src="https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />![version](https://img.shields.io/badge/version-21.7.1-blue)](https://nodejs.org/en/download/prebuilt-installer) </br>
 > [<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" />![version](https://img.shields.io/badge/version-4.31.1-blue)](https://www.docker.com/get-started/) </br>
 
-# Library / CDN
-> [![AlpineJS]](https://alpinejs.dev/essentials/installation) </br>
-> [![JQuery UI]](https://jqueryui.com) </br>
-> [![MomentJS]](https://momentjs.com) </br>
-> [![NotyJS]](https://www.jsdelivr.com/package/npm/noty) </br>
-> [![Sweetalert]](https://sweetalert2.github.io) </br>
-> [![tostr]](https://www.jsdelivr.com/package/npm/toastr) </br>
-> [![DataTables]](https://datatables.net/download/) </br>
-> [![AG Grid]](https://www.ag-grid.com/javascript-data-grid/getting-started/) / [![AG Grid Theme Builder]](https://www.ag-grid.com/theme-builder/) </br>
-> [![ListJS]](https://listjs.com/overview/download/) </br>
-> [![Flaticon]](https://www.flaticon.com/search?color=color) </br>
-
-# Database / Table Relation
-- Untuk mengetahui relasi antar table, bisa mengakses website berikut;
-> [![dbdiagram]](https://dbdiagram.io/d) </br>
-- Jika sudah login menggunakan akun pribadi, bisa menggunakan code yang sudah disiapkan pada file berikut
-> [![database/TableRelation.txt]](https://github.com/skuadolan/fullstack-laravel/tree/main/database/TableRelation.txt) </br>
-
-# Project Worklist
-> [![notion]](https://www.notion.so/skuadproduction/Fullstack-Klinik-fd00424e9f0f4871996679934edb861a) </br>
 
 # Setup
 ## Environment
@@ -53,20 +28,6 @@ DB_PORT=3306
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
-```
-```bash
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
-```
-
-> php.ini
-```bash
-extension=pdo_pgsql
-extension=pgsql
 ```
 
 ## Composer
